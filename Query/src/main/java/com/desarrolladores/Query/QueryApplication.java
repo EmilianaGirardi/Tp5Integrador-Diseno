@@ -1,4 +1,4 @@
-package com.desarrolladores.Command;
+package com.desarrolladores.Query;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

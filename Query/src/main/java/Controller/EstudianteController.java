@@ -11,5 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/estudiantes")
 public class EstudianteController {
     private EstudianteService estudianteService;
-    //metodos que leen de la base
+    // obtener lista de estudiantes de una carrera ordenados por apellido
+
+    //obtener la informacion de un estudiante especifico por dni.
+
+    //obtener la informacion de un estudiante especifico por libreta universitaria
+
 }

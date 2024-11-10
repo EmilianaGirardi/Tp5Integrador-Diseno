@@ -25,4 +25,12 @@ public class InscripcionService {
     private InscripcionRepository inscripcionRepository;
     private EstudianteRepository estudianteRepository;
     private CarreraRepository carreraRepository;
+
+    //obtener el numero de inscriptos y el numero de egresador por año de una carrera ordenadas por cantidad de egresados
+
+    //obtener el promedio de inscriptos por año de todas las carreras, en orden.
+
+
+
 }
+

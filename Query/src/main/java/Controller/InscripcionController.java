@@ -13,5 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/inscripciones")
 public class InscripcionController {
     private InscripcionService inscripcionService;
-    //metodos que leen de la base
+    //obtener el numero de inscriptos y el numero de egresador por año de una carrera ordenadas por cantidad de egresados
+
+    //obtener el promedio de inscriptos por año de todas las carreras, en orden.
 }
