@@ -26,6 +26,8 @@ public class InscripcionService {
     private EstudianteRepository estudianteRepository;
     private CarreraRepository carreraRepository;
 
+    //informar que un estudiante se graduo de una carrera.
+
     public ResponseEntity<String> addInscripcion(String idEstudiante, Integer idCarrera){
             Estudiante estudiante = estudianteRepository.getById(idEstudiante);
             if (estudiante == null){ return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El estudiante no existe");}

@@ -9,6 +9,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 //Lombok
@@ -47,7 +48,7 @@ public class Estudiante implements Serializable {
 
     public Estudiante(EstudianteDTO estudianteDTO){
         this.dniestudiante = estudianteDTO.getDniestudiante();
-        this.inscripciones = null;
+        this.inscripciones = new ArrayList<>();
         this.ciudad = estudianteDTO.getCiudad();
         this.genero = estudianteDTO.getGenero();
         this.apellido = estudianteDTO.getApellido();

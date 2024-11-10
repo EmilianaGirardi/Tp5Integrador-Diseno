@@ -23,6 +23,4 @@ public class EstudianteDTO {
     private char genero;
     private LocalDate fechaNacimiento;
     private String ciudad;
-    @JsonIgnore
-    private List<Inscripcion> inscripciones;
 }

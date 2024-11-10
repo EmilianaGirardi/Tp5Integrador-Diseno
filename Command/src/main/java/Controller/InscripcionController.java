@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class InscripcionController {
     private InscripcionService inscripcionService;
 
-    @PostMapping("/anadirInscripcion")
+    //informar que un estudiante se graduo de una carrera.
+    @PostMapping("/agregarInscripcion")
     public ResponseEntity<String> addInscripcion(@PathVariable String idEstudiante,
                                                  @PathVariable Integer carrera){
         return inscripcionService.addInscripcion(idEstudiante, carrera);

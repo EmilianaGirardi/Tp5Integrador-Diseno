@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class EstudianteController {
     private EstudianteService estudianteService;
 
-    @PostMapping("/anadir")
+    @PostMapping("/agregar")
     public ResponseEntity<String> postEstudiante(@RequestBody EstudianteDTO estudianteDTO){
        return estudianteService.addEstudiante(estudianteDTO);
     }
@@ -21,4 +21,6 @@ public class EstudianteController {
     public ResponseEntity<String> modificarEstudiante(@RequestBody EstudianteDTO estudianteDTO){
         return estudianteService.addEstudiante(estudianteDTO);
     }
+
+    //cambiar de carrera a un estudiante
 }

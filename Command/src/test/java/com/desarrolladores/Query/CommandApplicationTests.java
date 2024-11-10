@@ -1,4 +1,4 @@
-package com.desarrolladores.Command;
+package com.desarrolladores.Query;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
