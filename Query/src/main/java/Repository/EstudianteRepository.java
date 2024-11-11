@@ -1,6 +1,5 @@
 package Repository;
 
-import DTO.CarreraInscriptosDTO;
 import DTO.EstudianteDTO;
 import Entity.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,21 +1,20 @@
 package Service;
 
-import DTO.CarreraInscriptosDTO;
 import DTO.EstudianteDTO;
-import Entity.Estudiante;
 import Repository.EstudianteRepository;
 import Repository.InscripcionRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 @Getter
 @Setter
@@ -27,6 +26,7 @@ public class EstudianteService {
     private InscripcionRepository inscripcionRepository;
 
     // obtener lista de estudiantes de una carrera ordenados por apellido
+
     public ResponseEntity<List<EstudianteDTO>> getEstudiantesDeCarreraXApellido(String carrera){
         try {
             ArrayList<EstudianteDTO> respuesta = new ArrayList<>(estudianteRepository.getEstudiantesDeCarreraXApellido(carrera));
@@ -59,4 +59,5 @@ public class EstudianteService {
             return ResponseEntity.internalServerError().body(Collections.emptyList());
         }
     }
+
 }
