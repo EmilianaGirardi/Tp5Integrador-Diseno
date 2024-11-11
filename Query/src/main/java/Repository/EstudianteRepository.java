@@ -30,5 +30,5 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, String> 
             "JOIN e.inscripciones i " +
             "WHERE i.carrera.id = :carrera " +
             "ORDER BY e.apellido")
-    List<EstudianteDTO> getEstudiantesDeCarreraXApellido(@Param("carrera") String carrera);
+    List<EstudianteDTO> getEstudiantesDeCarreraXApellido(@Param("carrera") Integer carrera);
 }

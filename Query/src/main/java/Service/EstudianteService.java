@@ -27,7 +27,7 @@ public class EstudianteService {
 
     // obtener lista de estudiantes de una carrera ordenados por apellido
 
-    public ResponseEntity<List<EstudianteDTO>> getEstudiantesDeCarreraXApellido(String carrera){
+        public ResponseEntity<List<EstudianteDTO>> getEstudiantesDeCarreraXApellido(Integer carrera){
         try {
             ArrayList<EstudianteDTO> respuesta = new ArrayList<>(estudianteRepository.getEstudiantesDeCarreraXApellido(carrera));
             return ResponseEntity.ok(respuesta);
