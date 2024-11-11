@@ -1,5 +1,6 @@
 package Service;
 
+import Embeddable.InscripcionId;
 import Entity.Carrera;
 import Entity.Estudiante;
 import Entity.Inscripcion;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -26,7 +28,6 @@ public class InscripcionService {
     private EstudianteRepository estudianteRepository;
     private CarreraRepository carreraRepository;
 
-    //informar que un estudiante se graduo de una carrera.
 
     public ResponseEntity<String> addInscripcion(String idEstudiante, Integer idCarrera){
             Estudiante estudiante = estudianteRepository.getById(idEstudiante);
@@ -47,4 +48,31 @@ public class InscripcionService {
             }
     }
 
+    //informar que un estudiante se graduo de una carrera.
+    public ResponseEntity<String> updateGraduado(String idEstudiante, Integer idCarrera) {
+        Estudiante estudiante = estudianteRepository.getById(idEstudiante);
+        if (estudiante == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El estudiante no existe");
+        } else {
+            Carrera carrera = carreraRepository.getById(idCarrera);
+            if (carrera == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La carrera no existe");
+            } else {
+                InscripcionId id = new InscripcionId(carrera, estudiante);
+                Optional<Inscripcion> inscripcion = inscripcionRepository.findById(id);
+                if (inscripcion.isPresent()) {
+                    inscripcion.get().setGraduado(true);
+                    try {
+                        inscripcionRepository.save(inscripcion.get());
+                        return ResponseEntity.ok("Actualizacion de graduado exitosa");
+                    } catch (Exception e) {
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al graduar estudiante");
+                    }
+
+
+                } else
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error encontrar la inscripcion");
+            }
+        }
+    }
 }
