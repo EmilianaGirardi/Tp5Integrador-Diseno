@@ -17,7 +17,7 @@ public class CarreraController {
     private CarreraService carreraService;
 
     //recuperar las carreras y ordenar por cantidad de inscriptos.
-    @GetMapping("/informeIncriptos")
+    @GetMapping("/informeInscriptos")
     public ResponseEntity<List<CarreraInscriptosDTO>> getInformeInscriptosCarrera(){
         return carreraService.getCarrerasInscriptos();
     }
