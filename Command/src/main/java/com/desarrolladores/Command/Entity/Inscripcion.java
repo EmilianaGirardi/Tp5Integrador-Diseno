@@ -1,10 +1,11 @@
-package com.desarrolladores.Query.Entity;
+package com.desarrolladores.Command.Entity;
 
-import com.desarrolladores.Query.Embeddable.InscripcionId;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+
+import com.desarrolladores.Command.Embeddable.InscripcionId;
 
 @AllArgsConstructor
 @NoArgsConstructor

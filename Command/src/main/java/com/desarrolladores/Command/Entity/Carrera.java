@@ -1,6 +1,5 @@
-package com.desarrolladores.Query.Entity;
+package com.desarrolladores.Command.Entity;
 
-import com.desarrolladores.Query.DTO.CarreraDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,6 +9,8 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.desarrolladores.Command.DTO.CarreraDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor

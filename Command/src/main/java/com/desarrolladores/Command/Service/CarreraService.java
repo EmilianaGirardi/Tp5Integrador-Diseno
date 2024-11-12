@@ -1,8 +1,5 @@
-package com.desarrolladores.Query.Service;
+package com.desarrolladores.Command.Service;
 
-import com.desarrolladores.Query.DTO.CarreraDTO;
-import com.desarrolladores.Query.Entity.Carrera;
-import com.desarrolladores.Query.Repository.CarreraRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +7,10 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.desarrolladores.Command.DTO.CarreraDTO;
+import com.desarrolladores.Command.Entity.Carrera;
+import com.desarrolladores.Command.Repository.CarreraRepository;
 
 @Getter
 @Setter

@@ -1,8 +1,9 @@
-package com.desarrolladores.Query.Repository;
+package com.desarrolladores.Command.Repository;
 
-import com.desarrolladores.Query.Entity.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.desarrolladores.Command.Entity.Estudiante;
 
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, String> {

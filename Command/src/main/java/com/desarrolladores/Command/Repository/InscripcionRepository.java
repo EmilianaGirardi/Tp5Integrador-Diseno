@@ -1,9 +1,10 @@
-package com.desarrolladores.Query.Repository;
+package com.desarrolladores.Command.Repository;
 
-import com.desarrolladores.Query.Embeddable.InscripcionId;
-import com.desarrolladores.Query.Entity.Inscripcion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.desarrolladores.Command.Embeddable.InscripcionId;
+import com.desarrolladores.Command.Entity.Inscripcion;
 
 
 @Repository

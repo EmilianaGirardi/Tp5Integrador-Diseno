@@ -1,6 +1,5 @@
-package com.desarrolladores.Query.Entity;
+package com.desarrolladores.Command.Entity;
 
-import com.desarrolladores.Query.DTO.EstudianteDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +10,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.desarrolladores.Command.DTO.EstudianteDTO;
 
 //Lombok
 @AllArgsConstructor

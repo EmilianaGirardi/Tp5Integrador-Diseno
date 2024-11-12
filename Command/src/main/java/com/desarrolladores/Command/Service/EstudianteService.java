@@ -1,8 +1,5 @@
-package com.desarrolladores.Query.Service;
+package com.desarrolladores.Command.Service;
 
-import com.desarrolladores.Query.DTO.EstudianteDTO;
-import com.desarrolladores.Query.Entity.Estudiante;
-import com.desarrolladores.Query.Repository.EstudianteRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.desarrolladores.Command.DTO.EstudianteDTO;
+import com.desarrolladores.Command.Entity.Estudiante;
+import com.desarrolladores.Command.Repository.EstudianteRepository;
 
 @Getter
 @Setter

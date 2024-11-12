@@ -1,4 +1,4 @@
-package com.desarrolladores.Query.DTO;
+package com.desarrolladores.Command.DTO;
 
 import lombok.*;
 

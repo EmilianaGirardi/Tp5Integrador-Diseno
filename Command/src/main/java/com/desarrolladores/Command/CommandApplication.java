@@ -1,10 +1,11 @@
-package com.desarrolladores.Query;
+package com.desarrolladores.Command;
 
-import com.desarrolladores.Query.Repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.desarrolladores.Command.Repository.EstudianteRepository;
 
 @SpringBootApplication
 public class CommandApplication {
@@ -13,6 +14,5 @@ public class CommandApplication {
 
 		SpringApplication.run(CommandApplication.class, args);
 	}
-
 
 }

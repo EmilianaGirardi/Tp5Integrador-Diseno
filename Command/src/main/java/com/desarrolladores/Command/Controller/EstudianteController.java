@@ -1,10 +1,11 @@
-package com.desarrolladores.Query.Controller;
+package com.desarrolladores.Command.Controller;
 
-import com.desarrolladores.Query.DTO.EstudianteDTO;
-import com.desarrolladores.Query.Service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.desarrolladores.Command.DTO.EstudianteDTO;
+import com.desarrolladores.Command.Service.EstudianteService;
 
 //@AllArgsConstructor
 @RestController

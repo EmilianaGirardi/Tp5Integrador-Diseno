@@ -1,12 +1,13 @@
-package com.desarrolladores.Query.Embeddable;
+package com.desarrolladores.Command.Embeddable;
 
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
 import java.io.Serializable;
-import com.desarrolladores.Query.Entity.Carrera;
-import com.desarrolladores.Query.Entity.Estudiante;
+
+import com.desarrolladores.Command.Entity.Carrera;
+import com.desarrolladores.Command.Entity.Estudiante;
 
 @AllArgsConstructor
 @NoArgsConstructor
