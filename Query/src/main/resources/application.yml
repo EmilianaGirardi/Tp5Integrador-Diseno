@@ -4,6 +4,14 @@ spring:
   application:
     name: Query
 
+  kafka:
+    bootstrap-servers: localhost:9093
+    consumer:
+      group-id: query-service
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
   datasource:
     url: jdbc:postgresql://localhost:5432/queryDB
     username: postgres

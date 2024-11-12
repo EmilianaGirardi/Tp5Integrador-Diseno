@@ -3,7 +3,13 @@ server:
 spring:
   application:
     name: Command
-
+  kafka:
+    bootstrap-servers: localhost:9093
+    consumer:
+      group-id: command-service
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   datasource:
     url: jdbc:postgresql://localhost:5432/commandDB
     username: postgres

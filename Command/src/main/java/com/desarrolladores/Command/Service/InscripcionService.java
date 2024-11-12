@@ -19,7 +19,7 @@ import com.desarrolladores.Command.Repository.InscripcionRepository;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
+import org.springframework.kafka.core.KafkaTemplate;
 @Getter
 @Setter
 @AllArgsConstructor

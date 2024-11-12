@@ -1,9 +1,15 @@
 package com.desarrolladores.Command.Events;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface EventStore {
-    void addEvent(Event event);
+public class EventStore {
+    private List<Event> events = new ArrayList<>();
 
-    List<Event> getEvents();
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+    public List<Event> getEvents() {
+        return events;
+    }
 }
