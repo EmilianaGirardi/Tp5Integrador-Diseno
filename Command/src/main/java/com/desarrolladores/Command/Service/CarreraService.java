@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
-import com.desarrolladores.Command.DTO.CarreraDTO;
+import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.desarrolladores.Command.Events.*;
 import com.desarrolladores.Command.Entity.Carrera;
+import com.desarrolladores.Command.DTO.CarreraDTO;
 import com.desarrolladores.Command.Repository.CarreraRepository;
 
 @Getter
@@ -18,14 +20,14 @@ import com.desarrolladores.Command.Repository.CarreraRepository;
 @NoArgsConstructor
 @Service
 public class CarreraService {
-    @Autowired
-    private CarreraRepository carreraRepository;
+    private EventStore writeRepository;
 
     //dar de alta una carrera
     public ResponseEntity<String> postCarrera(CarreraDTO carreraDTO){
-        Carrera nuevaCarrera = new Carrera(carreraDTO);
+        Event event = new CarreraCreatedEvent(carreraDTO.getIdcarrera(), carreraDTO.getNombre()); // Se crea el evento
+        //Carrera nuevaCarrera = new Carrera(carreraDTO);
         try {
-            carreraRepository.save(nuevaCarrera);
+            writeRepository.addEvent(event); // Se agrega a la lista de eventos
             return ResponseEntity.ok().body("Carrera agregada con éxito");
         }
         catch (Exception e){

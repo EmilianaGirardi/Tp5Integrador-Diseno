@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.desarrolladores</groupId>
-	<artifactId>Command</artifactId>
+	<artifactId>Query</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Command</name>
-	<description>Microservicio1</description>
+	<name>Query</name>
+	<description>Microservicio2</description>
 	<url/>
 	<licenses>
 		<license/>

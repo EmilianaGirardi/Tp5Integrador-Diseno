@@ -13,14 +13,14 @@ public class InscripcionController {
     @Autowired
     private InscripcionService inscripcionService;
 
-    @PostMapping("/agregarInscripcion/{idEstudiante}/{carrera}")
+    @PostMapping("/agregar-inscripcion/id-estudiante/{idEstudiante}/id-carrera/{carrera}")
     public ResponseEntity<String> addInscripcion(@PathVariable String idEstudiante,
                                                  @PathVariable Integer carrera){
         return inscripcionService.addInscripcion(idEstudiante, carrera);
     }
 
     //informar que un estudiante se graduo de una carrera.
-    @PutMapping ("/actualizarGraduado/{idEstudiante}/{carrera}")
+    @PutMapping ("/actualizar-graduado/id-estudiante/{idEstudiante}/id-carrera/{carrera}")
     public ResponseEntity<String> updateGraduado(@PathVariable String idEstudiante,
                                                  @PathVariable Integer carrera){
         return inscripcionService.updateGraduado(idEstudiante, carrera);

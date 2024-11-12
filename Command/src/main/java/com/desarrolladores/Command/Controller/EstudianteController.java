@@ -19,7 +19,7 @@ public class EstudianteController {
        return estudianteService.addEstudiante(estudianteDTO);
     }
 
-    @PutMapping("/modificarEstudiante")
+    @PutMapping("/modificar-estudiante")
     public ResponseEntity<String> modificarEstudiante(@RequestBody EstudianteDTO estudianteDTO){
         return estudianteService.addEstudiante(estudianteDTO);
     }
