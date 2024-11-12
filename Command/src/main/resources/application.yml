@@ -1,9 +1,13 @@
 spring:
+  application:
+    name: Command
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/commandDB
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: create  # Si es para crear tablas vacías
