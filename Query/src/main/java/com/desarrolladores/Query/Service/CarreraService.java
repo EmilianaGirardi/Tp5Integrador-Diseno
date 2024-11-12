@@ -1,6 +1,8 @@
 package com.desarrolladores.Query.Service;
 
+import com.desarrolladores.Query.DTO.CarreraDTO;
 import com.desarrolladores.Query.DTO.CarreraInscriptosDTO;
+import com.desarrolladores.Query.Entity.Carrera;
 import com.desarrolladores.Query.Repository.CarreraRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +36,18 @@ public class CarreraService {
         }
         catch (Exception e) {
             return ResponseEntity.internalServerError().body(Collections.emptyList());
+        }
+    }
+
+    //METODOS PARA MODIFICAR LA BD
+    public ResponseEntity<String> postCarrera(CarreraDTO carreraDTO){
+        Carrera nuevaCarrera = new Carrera(carreraDTO);
+        try {
+            carreraRepository.save(nuevaCarrera);
+            return ResponseEntity.ok().body("Carrera agregada con éxito");
+        }
+        catch (Exception e){
+            return ResponseEntity.internalServerError().body("Error al guardar carrera " + e.getMessage());
         }
     }
 
