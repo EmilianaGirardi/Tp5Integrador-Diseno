@@ -8,12 +8,14 @@ import com.desarrolladores.Query.Repository.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityManager;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.http.HttpStatus;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
@@ -23,6 +25,10 @@ import java.util.Optional;
 
 @Service
 public class KafkaConsumer{
+
+    @Autowired
+    private EntityManager entityManager;
+
     @Autowired
     private EstudianteRepository estudianteRepository;
 
@@ -33,6 +39,7 @@ public class KafkaConsumer{
     private InscripcionRepository inscripcionRepository;
 
     @KafkaListener(topics = "eventos", groupId = "query-service")
+    @Transactional
     public ResponseEntity<String> consume(ConsumerRecord<String, String> record) throws JsonProcessingException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         // Meter lo que llega del broker en tipo JSON para parsearlo y ver a quien corresponde.
         String jsonValue = record.value();
@@ -86,6 +93,7 @@ public class KafkaConsumer{
         }
     }
 
+
     public ResponseEntity<String> apply(InscripcionCreatedEvent e) {
         Optional<Estudiante> estudianteOpt = estudianteRepository.findById(e.getIdEstudiante());
         if (!estudianteOpt.isPresent()) {
@@ -93,7 +101,6 @@ public class KafkaConsumer{
         }
 
         Optional<Carrera> carreraOpt = carreraRepository.findById(e.getIdCarrera());
-        //Carrera carrera = carreraRepository.findById(e.getIdCarrera()).orElseThrow(() -> new RuntimeException("Carrera no encontrada"));
         if (!carreraOpt.isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("La carrera no existe");
         }
@@ -107,16 +114,17 @@ public class KafkaConsumer{
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El estudiante ya está inscrito en esta carrera");
         }
 
-        // Crear la nueva inscripción sin intentar insertar la carrera nuevamente
+        // Crear la nueva inscripción
         Inscripcion nuevaInscripcion = new Inscripcion(carrera, estudiante, LocalDate.now(), false);
         try {
-            inscripcionRepository.save(nuevaInscripcion); // No se debe volver a persistir la carrera si ya existe
+            inscripcionRepository.save(nuevaInscripcion);  // Ahora no intentará insertar la carrera de nuevo
             return ResponseEntity.ok("Inscripción añadida correctamente");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar inscripción: " + ex.getMessage());
         }
     }
+
 
 
 
