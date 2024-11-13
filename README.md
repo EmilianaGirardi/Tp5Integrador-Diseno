@@ -8,6 +8,7 @@ El consumidor se encarga de tomar los eventos que el productor escribió y volca
 
 ## Datos del proyecto
 El consumidor utiliza una base de datos que representa un sistema de inscripciones en una universidad con diferentes carreras. A continuación se encuentra el diagrama de Entidad Relación de dicha base.
+DER.png
 
 ## Microservicio Productor
 ## Endpoints
