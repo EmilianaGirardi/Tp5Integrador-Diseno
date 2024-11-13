@@ -1,5 +1,7 @@
 package com.desarrolladores.Command.Service;
 
+import com.desarrolladores.Command.Events.CarreraCreatedEvent;
+import com.desarrolladores.Command.Events.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.desarrolladores.Command.DTO.CarreraDTO;
-import com.desarrolladores.Command.Entity.Carrera;
-import com.desarrolladores.Command.Repository.CarreraRepository;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.*;
 
 @Getter
 @Setter
@@ -20,16 +21,17 @@ import org.springframework.kafka.core.KafkaTemplate;
 @Service
 public class CarreraService {
     @Autowired
-    private CarreraRepository carreraRepository;
+    private KafkaProducer kafkaProducer;
 
     //dar de alta una carrera
     public ResponseEntity<String> postCarrera(CarreraDTO carreraDTO){
-        Carrera nuevaCarrera = new Carrera(carreraDTO);
+        Event event = new CarreraCreatedEvent(carreraDTO.getIdcarrera(), carreraDTO.getNombre());
         try {
-            carreraRepository.save(nuevaCarrera);
-            return ResponseEntity.ok().body("Carrera agregada con éxito");
+            kafkaProducer.sendMessage(event);
+            return ResponseEntity.ok().body("Carrera agregada a Kafka con éxito");
         }
         catch (Exception e){
+            e.printStackTrace();  // Esto imprimirá el error completo en los logs
             return ResponseEntity.internalServerError().body("Error al guardar carrera " + e.getMessage());
         }
     }

@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   zookeeper:
-    image: wurstmeister/zookeeper:latest   # Utilizar la última versión disponible
+    image: wurstmeister/zookeeper:latest
     container_name: zookeeper
     ports:
       - "2181:2181"
@@ -10,21 +10,13 @@ services:
       - kafka-network
 
   kafka:
-    image: bitnami/kafka:latest             # Utilizar imagen de Kafka de Bitnami, que es una imagen oficial y confiable
+    image: bitnami/kafka:latest
     container_name: kafka
     environment:
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9093
-      - KAFKA_LISTENER_SECURITY_PROTOCOL=PLAINTEXT
-      - KAFKA_LISTENER_NAMES=PLAINTEXT
-      - KAFKA_LISTENER_VERSIONS=0.11.0
-      - KAFKA_LISTENER_PORT=9093
-      - KAFKA_LISTENER_HOSTNAME=localhost
+      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093  # Listener que Kafka usará internamente
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9093  # Listener que se anuncia a los clientes
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_LISTENER_INTERNAL=PLAINTEXT://0.0.0.0:9092
-      - KAFKA_LISTENER_EXTERNAL=PLAINTEXT://localhost:9093
-      - KAFKA_LISTENER_SSL=false
       - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9093
     ports:
       - "9093:9093"
     depends_on:

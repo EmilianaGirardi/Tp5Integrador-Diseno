@@ -1,12 +1,15 @@
 package com.desarrolladores.Command.Events;
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "@class")
 public class EstudianteUpdatedEvent extends Event {
     private String dniestudiante;
     private String apellido;

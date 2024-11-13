@@ -1,15 +1,16 @@
 package com.desarrolladores.Command.Events;
 
-import com.desarrolladores.Command.Entity.*;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "@class")
 public class InscripcionDeletedEvent extends Event {
 
-    private Carrera carrera;
-    private Estudiante estudiante;
+    private String idEstudiante;
+    private Integer idCarrera;
 
 }

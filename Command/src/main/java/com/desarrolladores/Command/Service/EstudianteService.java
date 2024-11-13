@@ -1,5 +1,7 @@
 package com.desarrolladores.Command.Service;
 
+import com.desarrolladores.Command.Events.EstudianteCreatedEvent;
+import com.desarrolladores.Command.Events.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.desarrolladores.Command.DTO.EstudianteDTO;
-import com.desarrolladores.Command.Entity.Estudiante;
-import com.desarrolladores.Command.Repository.EstudianteRepository;
 import org.springframework.kafka.core.KafkaTemplate;
 @Getter
 @Setter
@@ -20,13 +20,22 @@ import org.springframework.kafka.core.KafkaTemplate;
 @Service
 public class EstudianteService {
     @Autowired
-    private EstudianteRepository estudianteRepository;
+    private KafkaProducer kafkaProducer;
 
     public ResponseEntity<String> addEstudiante(EstudianteDTO estudianteDTO){
+        Event event = new EstudianteCreatedEvent(
+                estudianteDTO.getDniestudiante(),
+                estudianteDTO.getApellido(),
+                estudianteDTO.getNombre(),
+                estudianteDTO.getLibretaUniversitaria(),
+                estudianteDTO.getGenero(),
+                estudianteDTO.getFechaNacimiento(),
+                estudianteDTO.getCiudad()
+        );
+
         try {
-            Estudiante nuevoEstudiante = new Estudiante(estudianteDTO);
-            estudianteRepository.save(nuevoEstudiante);
-            return ResponseEntity.ok("Estudiante guardado con exito");
+            kafkaProducer.sendMessage(event);
+            return ResponseEntity.ok("Estudiante agregado a Kafka con exito");
         }
         catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).
