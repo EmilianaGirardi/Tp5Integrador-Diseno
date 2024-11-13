@@ -52,7 +52,6 @@ public class KafkaConsumer{
         return redirect(className,eventMap);
     }
 
-
     // Persistir estudiante en BD
     public ResponseEntity<String> apply(EstudianteCreatedEvent e){
         System.out.println("Procesando evento EstudianteCreatedEvent");
@@ -93,7 +92,7 @@ public class KafkaConsumer{
         }
     }
 
-
+    // Persistir inscripcion en BD
     public ResponseEntity<String> apply(InscripcionCreatedEvent e) {
         Optional<Estudiante> estudianteOpt = estudianteRepository.findById(e.getIdEstudiante());
         if (!estudianteOpt.isPresent()) {
@@ -124,10 +123,6 @@ public class KafkaConsumer{
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar inscripción: " + ex.getMessage());
         }
     }
-
-
-
-
 
     // Actualizar graduacion de estudiante en tabla inscripcion en BD
     public ResponseEntity<String> apply(InscripcionUpdatedEvent e) {
