@@ -6,6 +6,8 @@ En esta versión del proyecto, implementamos dos microservicios que comparten la
 ## Datos del proyecto
 Los microservios utilizan una base de datos que representa un sistema de inscripciones en una universidad con diferentes carreras. A continuación se encuentra el diagrama de Entidad Relación de dicha base.
 
+<img src="DER.png" alt="Texto alternativo" width="400"/>
+
 ## Microservicio Command
 Este microservicio es el encargado de los servicios REST que modifican la base (PUT y POST), es decir, esta es su unica responsabilidad y no podrá entregar al usuario datos de la base.
 
