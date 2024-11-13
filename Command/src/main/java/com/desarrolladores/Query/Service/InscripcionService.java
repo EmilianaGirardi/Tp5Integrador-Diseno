@@ -65,7 +65,7 @@ public class InscripcionService {
                 InscripcionId id = new InscripcionId(carrera, estudiante);
                 Optional<Inscripcion> inscripcion = inscripcionRepository.findById(id);
                 if (inscripcion.isPresent()) {
-                    System.out.println(inscripcion.get().isGraduado());
+                    inscripcion.get().setGraduado(true);
                     try {
                         inscripcionRepository.save(inscripcion.get());
                         return ResponseEntity.ok("Actualizacion de graduado exitosa");

@@ -20,6 +20,6 @@ public class EstudianteController {
 
     @PutMapping("/modificarEstudiante")
     public ResponseEntity<String> modificarEstudiante(@RequestBody EstudianteDTO estudianteDTO){
-        return estudianteService.addEstudiante(estudianteDTO);
+        return estudianteService.modificarEstudiante(estudianteDTO);
     }
 }

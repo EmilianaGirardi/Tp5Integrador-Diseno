@@ -26,12 +26,5 @@ public class InscripcionController {
         return inscripcionService.getInscriptosYEgresadosPorAnio();
     }
 
-    //obtener el promedio de inscriptos por año de todas las carreras, en orden.
-    @GetMapping("/informePromedioIncriptosPorAnioCarrera")
-    public ResponseEntity<List<ReportePromedioInscriptosDTO>> getInformeInscriptosAnioCarrera(){
-        return inscripcionService.getPromedioInscriptosPorAnio();
-    }
-
-
 }
 

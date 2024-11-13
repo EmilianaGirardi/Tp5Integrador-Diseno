@@ -35,7 +35,7 @@ public class EstudianteController {
     //obtener la informacion de un estudiante especifico por libreta universitaria
     @GetMapping("/estudiantePorLibreta/{libreta}")
     public ResponseEntity<List<EstudianteDTO>> getEstudiantePorLibreta(@PathVariable String libreta){ //TODO: el PathVariable va o no?
-        return estudianteService.getEstudiantePorDNI(libreta);
+        return estudianteService.getEstudiantePorLibreta(libreta);
     }
 
 
