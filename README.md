@@ -46,7 +46,7 @@ y puede devolver las siguientes respuestas:
 - 200 OK Estudiante agregado a Kafka con exito
 - 500 Internal Server Error: Error al guardar estudiante + <mensaje de la excepción>
 
-> PUT http://localhost:8080/estudiantes/modificarEstudiante
+> PUT http://localhost:8080/estudiantes/modificar-estudiante
 - Modificar un estudiante
 Este endpoint espera los datos del estudiante actualizados en el body de la request en el siguiente formato de ejemplo:
 ```json
@@ -64,13 +64,13 @@ y puede devolver las siguientes respuestas:
 - 200 OK Estudiante agregado a Kafka con exito
 - 500 Internal Server Error: Error al guardar estudiante + <mensaje de la excepción>
 
-> POST http://localhost:8080/inscripciones/agregarInscripcion/{dniEstudiante}/{idCarrera}
+> POST http://localhost:8080/inscripciones/agregar-inscripcion/id-estudiante/{dniEstudiante}/id-carrera/{idCarrera}
 - Agregar una inscripcion
 Este endpoint espera el dni del estudiante a inscribir y el id de la carrera como path variables y puede devolver las siguientes respuestas:
 - 200 OK Inscripcion agregada a Kafka con exito
 - 500 Internal Server Error: Error al guardar estudiante + <mensaje de la excepción>
 
-> PUT http://localhost:8080/inscripciones/actualizarGraduado/{dniEstudiante}/{idCarrera}
+> PUT http://localhost:8080/inscripciones/actualizar-graduado/id-estudiante/{dniEstudiante}/id-carrera/{idCarrera}
 - Registra la graduacion de un estudiante de una carrera
 Este endpoint espera el dni del estudiante que se gradua y el id de la carrera como path variables y puede devolver las siguientes respuestas:
 - 200 OK Inscripcion a actualizar agregada a Kafka con éxito
